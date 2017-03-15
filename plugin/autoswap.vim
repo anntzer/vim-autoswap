@@ -188,7 +188,7 @@ function! AS_DetectActiveWindow_Windows (filename)
 	let l:serverlist = substitute(l:serverlist, "\n", ",", "g")
 	let l:server_id_to_server_dict = {}
 	for server in split(l:serverlist, ",")
-		call remote_send(server, ":call AS_FileLoaded('" . expand("%:p") . "')<CR>", "server_id")
+		call remote_send(server, "<Esc>:call AS_FileLoaded('" . expand("%:p") . "')<CR><CR>", "server_id")
 		let l:server_id_to_server_dict[server_id] = server
 		let s:AS_sent_with_no_response += 1
 	endfor
